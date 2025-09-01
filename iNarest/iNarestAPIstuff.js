@@ -1,14 +1,3 @@
-function bungler(){
-    fetch('https://api.inaturalist.org/v1/observations/species_counts?user_id=danieldas')
-  .then(response => response.json()) // convert response to JSON
-  .then(data => {
-    // now 'data' is a JavaScript object
-       document.getElementById("oak").innerHTML = data['results']['0']['taxon']['name']; 
-  })
-  .catch(error => console.error('Error fetching data:', error));
-    
-}
-
 async function getRarestSpecies(username,howManyResultsToDisplay) {
     document.getElementById("oak").innerHTML = "loading...";
     //clear the table
@@ -18,49 +7,53 @@ async function getRarestSpecies(username,howManyResultsToDisplay) {
         table.deleteRow(x);
     }
     
-    
-    var iconicTaxaString = getIconicTaxaString();
-    var allResults = await getAllSpecies(username, iconicTaxaString);
-    var resultsSorted = allResults.sort((a, b) => a[0] - b[0])
-    console.log(resultsSorted);
-    
-    for (let i = 0; i < howManyResultsToDisplay; i++) {
-        var row = table.insertRow(i+1);
-        var taxaIcon = row.insertCell(0);
-        var sciName = row.insertCell(1);
-        var comName = row.insertCell(2);
-        var numObs = row.insertCell(3);
-        //apply styles
-        numObs.className = "paddedEntry";
-        comName.className = "paddedEntry";
-        
-        //break from the loop if out of results
-        try{
-          taxaIcon.innerHTML = getEmoji(resultsSorted[i][4],resultsSorted[i][5]);  
+    console.log(username);
+    if(isUsernameValid(username)){
+        var iconicTaxaString = getIconicTaxaString();
+        var allResults = await getAllSpecies(username, iconicTaxaString);
+        var resultsSorted = allResults.sort((a, b) => a[0] - b[0])
+        console.log(resultsSorted);
+
+        for (let i = 0; i < howManyResultsToDisplay; i++) {
+            var row = table.insertRow(i+1);
+            var taxaIcon = row.insertCell(0);
+            var sciName = row.insertCell(1);
+            var comName = row.insertCell(2);
+            var numObs = row.insertCell(3);
+            //apply styles
+            numObs.className = "paddedEntry";
+            comName.className = "paddedEntry";
+
+            //break from the loop if out of results
+            try{
+              taxaIcon.innerHTML = getEmoji(resultsSorted[i][4],resultsSorted[i][5]);  
+            }
+            catch{
+                break;
+            }
+
+            var sciNameHTML = '<a href="https://www.inaturalist.org/taxa/'.concat(resultsSorted[i][1]).concat('">').concat(resultsSorted[i][2]).concat('</a>');
+            sciName.innerHTML = sciNameHTML;
+            if (resultsSorted[i][3] === undefined){
+                comName.innerHTML = "";
+            }
+            else {
+               comName.innerHTML = resultsSorted[i][3]; 
+            }
+            numObs.innerHTML = resultsSorted[i][0];
         }
-        catch{
-            break;
-        }
-        
-        var sciNameHTML = '<a href="https://www.inaturalist.org/taxa/'.concat(resultsSorted[i][1]).concat('">').concat(resultsSorted[i][2]).concat('</a>');
-        sciName.innerHTML = sciNameHTML;
-        if (resultsSorted[i][3] === undefined){
-            comName.innerHTML = "";
-        }
-        else {
-           comName.innerHTML = resultsSorted[i][3]; 
-        }
-        numObs.innerHTML = resultsSorted[i][0];
+        document.getElementById("oak").innerHTML = "";
+        //this replaces all with discord emoji
+        twemoji.parse(document.body, {
+            className: 'twemoji',
+            folder: 'svg',
+            ext: '.svg',
+            onlyEmojiClass: 'emoji-fallback'
+        });
     }
-    document.getElementById("oak").innerHTML = "";
-    //this replaces all with discord emoji
-    twemoji.parse(document.body, {
-        className: 'twemoji',
-        folder: 'svg',
-        ext: '.svg',
-        onlyEmojiClass: 'emoji-fallback'
-    });
-    
+    else{ //if username isn't valid, doesn't do the api calls and just says this:
+        document.getElementById("oak").innerHTML = "Invalid username!";
+    } 
 }
 
 async function getAllOnPage(username, pageNumber, iconicTaxa) {
@@ -104,7 +97,6 @@ async function getAllSpecies(username, iconicTaxa) {
     console.log(total_pages);
     for (let i = 1; i <= total_pages; i++) {
         let pageValues = await getAllOnPage(username,i, iconicTaxa);
-        //console.log(`Page ${i} returned:`, pageValues);
         addAllEntriesFromOneArrayToAnotherArray(pageValues,speciesList);
     }
     return speciesList;
@@ -115,9 +107,6 @@ async function getAllSpecies(username, iconicTaxa) {
 //this gets how many pages there are
 function howManyPages(username, iconicTaxa) {
     const url = `https://api.inaturalist.org/v1/observations/species_counts?user_id=${username}&iconic_taxa=${iconicTaxa}`;
-    console.log(url);
-     
-    //return fetch('https://api.inaturalist.org/v1/observations/species_counts?user_id='.concat(username))
     return fetch(url)
         .then(response => response.json()) // convert response to JSON
         .then(data => {
@@ -176,6 +165,17 @@ function getIconicTaxaString(){
         }
         return selectedTaxa.toString();
     }
+}
+
+//checks that the provided username is valid. Returns a boolean
+function isUsernameValid(username){
+    if(username == null || username==""){
+        return false;
+    }
+    else if(username.includes(" ") || username.includes(",") || username.includes("?") || username.includes("&")){
+        return false;
+    }
+    else return true;
 }
 
 function getEmoji(ancestry,iconic_taxa){
