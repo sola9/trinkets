@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Least Common Species</title>
+        <script
+			  src="https://code.jquery.com/jquery-3.7.1.js"
+			  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			  crossorigin="anonymous"></script>
+        <script src="iNarestAPIstuff.js"></script>
+        
+        <link rel="stylesheet" href="iNarest_style.css">
+        
+        <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+
+
+        
+    </head>
+
+    <body>
+        <h2>Least Common Species</h2>
+        <p>This tool shows the "rarest" species found by an iNaturalist user.</p>
+        <input type="text" id="user" name="username" placeholder="username">
+        <button onclick="getRarestSpecies(document.getElementById('user').value,document.getElementById('num_results').value)"> Go </button>
+        <p id="oak"></p>
+        <h3>Options</h3>
+        <label for="number">Number of results</label>
+        <input type="number" id="num_results" value="20" min="1" max="100">
+        <br>
+        
+        <p>Iconic taxa to include:</p>
+        
+        <input type="checkbox" id="birdBox" name="birdBox" value="Birds">
+        <label for="birdBox">Birds</label>
+        
+        <input type="checkbox" id="amphiBox" name="amphiBox" value="Amphibians">
+        <label for="amphiBox">Amphibians</label>
+        
+        <input type="checkbox" id="reptBox" name="reptBox" value="Reptiles">
+        <label for="reptBox">Reptiles</label>
+        
+        <input type="checkbox" id="mammBox" name="mammBox" value="Mammals">
+        <label for="mammBox">Mammals</label>
+        
+        <input type="checkbox" id="fishBox" name="fishBox" value="Fish">
+        <label for="fishBox">Ray-Finned Fish</label>
+        
+        <input type="checkbox" id="mollBox" name="mollBox" value="Mollusks">
+        <label for="mollBox">Mollusks</label>
+        
+        <input type="checkbox" id="aracBox" name="aracBox" value="Arachnids">
+        <label for="aracBox">Arachnids</label>
+        
+        <input type="checkbox" id="insectBox" name="insectBox" value="Insects">
+        <label for="insectBox">Insects</label>
+        
+        <input type="checkbox" id="plantBox" name="plantBox" value="Plants">
+        <label for="plantBox">Plants</label>
+        
+        <input type="checkbox" id="fungiBox" name="fungiBox" value="Fungi">
+        <label for="fungiBox">Fungi</label>
+        
+        <input type="checkbox" id="protoBox" name="protoBox" value="Protozoans">
+        <label for="protoBox">Protozoans</label>
+        
+        <input type="checkbox" id="unkBox" name="unkBox" value="Unknown">
+        <label for="unkBox">Unknown</label>
+        
+        
+        <hr>
+        <table id="results_table">
+            <thead>
+                <th></th>
+                <th>Scientific Name</th>
+                <th>Common Name</th>
+                <th># of observations</th>
+            </thead>
+        </table>
+    </body>
+
+</html>

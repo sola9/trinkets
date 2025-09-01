@@ -1,0 +1,23 @@
+
+img.emoji, img.twemoji {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.1em; /* align better with text */
+}
+
+p,h1,h2,h3,label,table{
+    font-family: sans-serif;
+}
+
+body{
+    padding: 5px;
+    background-color:aliceblue;
+}
+
+label{
+    margin-right: 1px;
+}
+
+.paddedEntry{
+    padding-left: 10px;
+}
