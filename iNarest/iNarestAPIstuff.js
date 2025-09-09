@@ -172,7 +172,7 @@ function isUsernameValid(username){
     if(username == null || username==""){
         return false;
     }
-    else if(username.includes(" ") || username.includes(",") || username.includes("?") || username.includes("&")){
+    else if(username.includes(" ") || username.includes(",") || username.includes("?") || username.includes("&") || username.includes("=")){
         return false;
     }
     else return true;
