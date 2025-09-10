@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iNatocabulary</title>
+        <script
+                  src="https://code.jquery.com/jquery-3.7.1.js"
+                  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+                  crossorigin="anonymous"></script>
+        <script src="inocab.js"></script>
+        <link rel="stylesheet" href="inocab.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    </head>
+    <body onload="setImage2()">
+        <div class="top_inputs">
+            <select name="useRecentSelector" id="useRecentSelector" style="margin-right:5px">
+            <option value="true">Pick from the most recent observations</option>
+            <option value="false">Pick from all observations</option>
+            </select>
+            <button onclick="setImage2()" style="margin-right:5px">Again</button>
+            <label for="inputWord" style="margin-right:5px">Your word:</label>
+            <input type="text" id="inputWord" name="inputWord" placeholder = "leave blank for random"> 
+        </div>
+        <p id="error_message" class="error_message"></p>
+        <div class="spacer"></div>
+        
+        <h1 id="theWord"></h1>
+        <div class="row">
+            <div class="columnL">
+                <img src="" id = "the_photo">
+                <p id="attributionInfo" class="attributionText"></p>
+            </div>
+            <div class="columnR">
+                <h3 id="taxaName"></h3>
+                <h4 id = "placeName"></h4>
+                <p id = "obsDescription" class="obsDescription"></p>
+            </div>
+        </div> 
+        
+    </body>
+</html>
