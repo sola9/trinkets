@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="dvwords_style.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="dvwords.js"></script>
+    <div class="mainThingy">
+        <h1>DragonVale Words</h1>
+        <p>Write or paste text into the box to see how many words are dragon names!</p>
+        <form>
+            <label class="radio-inline">
+                <input type="radio" name="optradio" id="noSpace" checked>Don't check for spaces
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio" id="spaceBefore">Check for spaces before name
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio" id="spaceAfter">Check for spaces after name
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio" id="spaceBoth">Check for spaces before &amp; after name
+            </label>
+        </form>
+        <br>
+        <textarea id="inputfield" name="inputfield" rows="4" cols="100"></textarea>
+        <br>
+        <br>
+        <button onclick="analyzeTheInput()">Go!</button>
+        <p id="outputText" style="white-space: pre-wrap;"></p>
+        <hr>
+        <p id="mostRecent">Most recent dragon added: </p>
+        <p>All the dragon names were manually inputted into a CSV file. If you discover a misspelled/missing name, please <a href="https://github.com/sola9/trinkets/issues">let me know</a>.</p>
+    </div>    
+</body>
+</html>
