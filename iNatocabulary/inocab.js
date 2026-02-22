@@ -85,8 +85,8 @@ async function setImage2() {
 //returns a random word
 async function getRandomWord(){
     //tries to get it from the api
-    //let word_api_url = `https://random-word-api.herokuapp.com/word`; //this is the first api I tried... seems to have a lot of downtime
-    let word_api_url = `https://random-word-api.vercel.app/api?words=1`;
+    let word_api_url = `https://random-word-api.herokuapp.com/word`; //this is the first api I tried... seems to have a lot of downtime. Reverted back to this...
+    //let word_api_url = `https://random-word-api.vercel.app/api?words=1`; //this is the second api I tried... it was taken down for some reason
     try{
         while(true){
             word = "Evil";
