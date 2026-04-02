@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: inline-block; /* Adjusts container size to image */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; /* Ensures it stays on top */
+}
+
+.pagetitle {
+    text-align: center;
+}
+
+.columnL {
+    float: left;
+    width: 50%;
+}
+.columnR {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body{
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color:whitesmoke;
+}
+
+.profileText {
+    margin-right: 50px;
+}
+
+h2{
+    font-family: sans-serif;
+}
+
+h3{
+    font-family: sans-serif;
+}
+
+.inputFeedback{
+    color:red;
+    font-family: sans-serif;
+}

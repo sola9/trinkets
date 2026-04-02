@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>iNentifier Profile</title>
+        <link href="style.css" rel="stylesheet" />
+        <script
+                  src="https://code.jquery.com/jquery-3.7.1.js"
+                  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+                  crossorigin="anonymous"></script>
+        <script src="iNentifierScript.js"></script>
+         <link rel="stylesheet" href="iNentifierStyle.css">
+    </head>
+    <body>
+        <input id="userinput" placeholder="username">
+        <button onclick="updateStatsPage(document.getElementById('userinput').value)">Go</button>
+        <label id="inputFeedback" class="inputFeedback"></label>
+        <h2 id="usernames" class = "pagetitle">username • user name</h2>
+        <h3 id="idstats" class="pagetitle"># IDs • ID/Obs ratio • # ID/Day since (join date)</h3>
+        <div class="row">
+            <div class="columnL">
+                <h3>Profile Text</h3>
+                <p id="userDesc" class="profileText">username is a naturalist!</p>
+                <h3>ID Heatmap</h3>
+                <!--This part (incl. relevant CSS) was from the Google AI overview -->
+                <div class="container">
+                    <img src="map_base.jpg" class="base"> <!--Map image is from https://commons.wikimedia.org/wiki/File:Mercator-projection.jpg, in public domain -->
+                    <img src="map_base.jpg" class="overlay" id="heatmap">
+                </div>
+            </div>
+            <div class="columnR">
+                <h3>Most IDed Taxa</h3>
+                <table id="taxa_table">
+                    <tr>
+                        <th>Pic</th>
+                        <th>Sci Name</th>
+                        <th>Common Name</th>
+                    <th># IDs</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
