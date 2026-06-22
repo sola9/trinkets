@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lin Tongze Dressup</title>
+  <link href="TongzeStyle.css" rel="stylesheet" />
+  <script src="TongzeScript.js"></script>
+</head>
+<body onload="randomizeEverything()" id="colorThis">
+    <h2>Lin Tongze Dressup</h2>
+    <p>Around the time I made the "<a href="https://sola9.github.io/trinkets/iNentifierProfile/">iNentifier Profile</a>" tool, THE13RUIN uploaded "<a href="https://opengameart.org/content/dress-up-illustration-set-lin-tongze">Dress-Up Illustration Set - Lin Tongze</a>" to OpenGameArt. I had the thought
+  that I could use the position:absolute CSS attribute that I used for the map with the paperdoll assets. It works well enough as you can see for yourself.
+   Formal attribution: "<a href="https://opengameart.org/content/dress-up-illustration-set-lin-tongze">Dress-Up Illustration Set - Lin Tongze</a>" by THE13RUIN, under CC-BY-SA.</p>
+    <div class="row">
+      <div class="columnL">
+        <div class="container">
+          <img src="TongzeAssets/body.png" class="base" id="body" height="796px" width="556px">
+          <img src="TongzeAssets/empty.png" class="overlay" id="expression">
+          <img src="TongzeAssets/eyes1.png" class="overlay" id="eyes">
+          <img src="TongzeAssets/eyebrow1.png" class="overlay" id="eyebrows">
+          <img src="TongzeAssets/empty.png" class="overlay" id="lens">
+          <img src="TongzeAssets/empty.png" class="overlay" id="frames">
+          <img src="TongzeAssets/mouth1.png" class="overlay" id="mouth">
+          <img src="TongzeAssets/empty.png" class="overlay" id="watch">
+          <img src="TongzeAssets/empty.png" class="overlay" id="bracelet1">
+          <img src="TongzeAssets/empty.png" class="overlay" id="bracelet2">
+          <img src="TongzeAssets/empty.png" class="overlay" id="choker">
+          <img src="TongzeAssets/empty.png" class="overlay" id="legring">
+          <img src="TongzeAssets/empty.png" class="overlay" id="hairbraid">
+          <img src="TongzeAssets/hairback1.png" class="overlay" id="hairback">
+          <img src="TongzeAssets/hairfront1.png" class="overlay" id="hairfront">
+          <img src="TongzeAssets/stocking3.png" class="overlay" id="stocking">
+          <img src="TongzeAssets/skirt1.png" class="overlay" id="bottom">
+          <img src="TongzeAssets/socks1.png" class="overlay" id="socks">
+          <img src="TongzeAssets/shoes2.png" class="overlay" id="shoes">
+          <img src="TongzeAssets/empty.png" class="overlay" id="dress">
+          <img src="TongzeAssets/shirt1.png" class="overlay" id="shirt">
+          <img src="TongzeAssets/empty.png" class="overlay" id="sweater">
+          <img src="TongzeAssets/coat1.png" class="overlay" id="coat">
+          <img src="TongzeAssets/empty.png" class="overlay" id="scarf">
+          <img src="TongzeAssets/empty.png" class="overlay" id="hairside">     
+        </div>
+      </div>
+      
+      <div class="columnR">
+        <h3>Hair</h3>
+        <label for="hairfront">Main Hair:</label>
+        <select name="hairfront" id="hairFrontOption" onchange="testChange(this.id,this.value)">
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        </select>
+        <br>
+        <label for="hairback">Hair Back:</label>
+        <select name="hairback" id="hairBackOption" onchange="testChange(this.id,this.value)">
+        <option value="none">None</option>
+        <option value="shortblack">Short Black</option>
+        <option value="shortwhite">Short White</option>
+        <option value="medblack">Medium Black</option>
+        <option value="medwhite">Medium White</option>
+        <option value="longblack">Long Black</option>
+        <option value="longwhite">Long White</option>
+        </select>
+        <br>
+        <label for="hairside">Hair Side:</label>
+        <select name="hairside" id="hairSideOption" onchange="testChange(this.id,this.value)">
+        <option value="none">None</option>
+        <option value="shortblack">Short Black</option>
+        <option value="shortwhite">Short White</option>
+        <option value="longblack">Long Black</option>
+        <option value="longwhite">Long White</option>
+        </select>
+        <br>
+        <label for="hairbraid">Braids &amp; Buns:</label>
+        <select name="hairbraid" id="hairBraidOption" onchange="testChange(this.id,this.value)">
+        <option value="none">None</option>
+        <option value="ponyblack">Ponytail Black</option>
+        <option value="ponywhite">Ponytail White</option>
+        <option value="braidblack">Braid Black</option>
+        <option value="braidwhite">Braid White</option>
+        <option value="bunblack">Bun Black</option>
+        <option value="bunwhite">Bun White</option>
+        </select>
+        <br>
+        <h3>Face</h3>
+        <label for="eyebrow">Eyebrows</label>
+        <select name="eyebrow" id="eyebrowOption" onchange="testChange(this.id,this.value)">
+        <option value="brow1">Eyebrows 1</option>
+        <option value="brow2">Eyebrows 2</option>
+        <option value="brow3">Eyebrows 3</option>
+        <option value="brow4">Eyebrows 4</option>
+        <option value="brow5">Eyebrows 5</option>
+        <option value="brow6">Eyebrows 6</option>
+        <option value="brow7">Eyebrows 7</option>
+        </select>
+        <br>
+        <label for="eyes">Eyes</label>
+        <select name="eyes" id="eyesOption" onchange="testChange(this.id,this.value)">
+        <option value="eyes1">Eyes 1</option>
+        <option value="eyes2">Eyes 2</option>
+        <option value="eyes3">Eyes 3</option>
+        <option value="eyes4">Eyes 4</option>
+        <option value="eyes5">Eyes 5</option>
+        <option value="eyes6">Eyes 6</option>
+        <option value="eyes7">Eyes 7</option>
+        <option value="eyes8">Eyes 8</option>
+        <option value="eyes9">Eyes 9</option>
+        <option value="eyes10">Eyes 10</option>
+        <option value="eyes11">Eyes 11</option>
+        <option value="eyes12">Eyes 12</option>
+        </select>
+        <br>
+        <label for="mouth">Mouth</label>
+        <select name="mouth" id="mouthOption" onchange="testChange(this.id,this.value)">
+        <option value="mouth1">Mouth 1</option>
+        <option value="mouth4">Mouth 4</option>
+        <option value="mouth5">Mouth 5</option>
+        <option value="mouth6">Mouth 6</option>
+        <option value="mouth7">Mouth 7</option>
+        <option value="mouth9">Mouth 9</option>
+        <option value="mouth10">Mouth 10</option>
+        <option value="mouth11">Mouth 11</option>
+        <option value="mouth12">Mouth 12</option>
+        <option value="mouth13">Mouth 13</option>
+        <option value="mouth14">Mouth 14</option>
+        <option value="mouth17">Mouth 17</option>
+        <option value="mouth18">Mouth 18</option>
+        <option value="mouth21">Mouth 21</option>
+        <option value="mouth22">Mouth 22</option>
+        <option value="mouth23">Mouth 23</option>
+        <option value="mouth25">Mouth 25</option>
+        <option value="mouth27">Mouth 27</option>
+        </select>
+        <br>
+        <label for="expression">Expression</label>
+        <select name="expression" id="expressionOption" onchange="testChange(this.id,this.value)">
+        <option value="none">None</option>
+        <option value="ex1">Fear</option>
+        <option value="ex2">Shadow</option>
+        <option value="ex3">Blush</option>
+        </select>
+        
+        <h3>Tops</h3>
+        <label for="coat">Coat:</label>
+        <select name="coat" id="coatOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Coat</option>
+        <option value="brown">Brown Coat</option>
+        <option value="grey">Gray Coat</option>
+        </select>
+        <br>
+        <label for="sweat">Sweater:</label>
+        <select name="sweat" id="sweatOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Sweater</option>
+        <option value="beige">Beige Sweater</option>
+        <option value="grey">Grey Sweater</option>
+        </select>
+        <br>
+        <label for="shirt">Shirt:</label>
+        <select name="shirt" id="shirtOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Shirt</option>
+        <option value="tshirt">T-Shirt</option>
+        <option value="collar1">Collared Shirt (black ribbon)</option>
+        <option value="collar2">Collared Shirt (red ribbon)</option>  
+        </select>
+        <br>
+        <label for="dress">Dress:</label>
+        <select name="dress" id="dressOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Dress</option>
+        <option value="dress1">Red Dress</option>
+        <option value="dress2">Black Dress</option>
+        <option value="dress3">Plaid Cheongsam</option>
+        <option value="dress4">Gray Cheongsam</option>
+        <option value="dress5">Pink Cheongsam</option>
+        </select>
+        <br>
+        <h3>Bottoms</h3>
+        <label for="skirt">Skirt/Shorts:</label>
+        <select name="skirt" id="skirtOption" onchange="testChange(this.id,this.value)">
+        <option value="none">None</option>
+        <option value="shorts">Shorts</option>
+        <option value="skirt1">Black Skirt</option>
+        <option value="skirt2">Red Skirt</option>  
+        </select>
+        <br>
+        <label for="stocking">Stockings:</label>
+        <select name="stocking" id="stockingOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Stockings</option>
+        <option value="stock3">Black Stockings</option>
+        <option value="stock4">White Stockings</option>
+        <option value="stock1">Black Gartered Stockings</option>
+        <option value="stock2">White Gartered Stockings</option>
+        </select>
+        <br>
+        <h3>Feet</h3>
+        <label for="socks">Socks:</label>
+        <select name="socks" id="sockOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Socks</option>
+        <option value="sock1">White Socks</option>
+        <option value="sock2">Black Socks</option>
+        <option value="sock3">Black Long Socks</option>
+        <option value="sock4">White Long Socks</option>
+        <option value="sock5">Black Longer Socks</option>
+        <option value="sock6">White Longer Socks</option>
+        <option value="sock7">Striped Longer Socks</option>
+        </select>
+        <br>
+        <label for="shoes">Shoes:</label>
+        <select name="shoes" id="shoeOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Shoes</option>
+        <option value="shoe1">Pink Sneakers</option>
+        <option value="shoe2">Black Sneakers</option>
+        <option value="shoe3">Brown Leather Shoes</option>
+        <option value="shoe4">Black Leather Shoes</option>
+        <option value="shoe5">Brown Boots</option>
+        <option value="shoe6">Grey Boots</option>
+        <option value="shoe7">Red Sandals</option>
+        <option value="shoe8">Black Sandals</option>
+        <option value="shoe9">Pink Strap Sandals</option>
+        <option value="shoe10">Gray Strap Sandals</option>
+        <option value="shoe11">Pink Cat Slippers</option>
+        <option value="shoe12">Black Cat Slippers</option>
+        <option value="shoe13">Traditional Chinese Shoes</option>
+        </select>
+        <br>
+        <h3>Accessories</h3>
+        <label for="frames">Glasses Frames</label>
+        <select name="frames" id="framesOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Glasses</option>
+        <option value="frames1">Black Frame</option>
+        <option value="frames2">Red Frame</option>
+        </select>
+        <br>
+        <label for="lens">Glasses Lenses</label>
+        <select name="lens" id="lensOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Lenses</option>
+        <option value="lens1">Glasses Lenses</option>
+        <option value="lens2">Sunglasses Lenses</option>
+        </select>
+        <br>
+        <label for="scarf">Scarf</label>
+        <select name="scarf" id="scarfOption" onchange="testChange(this.id,this.value)">
+        <option value="none">No Scarf</option>
+        <option value="scarf1">Plaid Scarf</option>
+        <option value="scarf2">Red Scarf</option>
+        </select>
+        <br>
+        <input type="checkbox" id="bracelet1Option" name="bracelet1" value="bracelet1" onchange="accessoryToggled(this.id,this.checked)" >
+        <label for="bracelet1">Bead Bracelet</label><br>
+        <input type="checkbox" id="bracelet2Option" name="bracelet2" value="bracelet2" onchange="accessoryToggled(this.id,this.checked)">
+        <label for="bracelet2">Jade Bracelet</label><br>
+        <input type="checkbox" id="chokerOption" name="choker" value="choker" onchange="accessoryToggled(this.id,this.checked)">
+        <label for="choker">Choker</label><br>
+        <input type="checkbox" id="legringOption" name="legring" value="legring" onchange="accessoryToggled(this.id,this.checked)">
+        <label for="legring">Leg Ring</label><br>
+        <input type="checkbox" id="watchOption" name="watch" value="watch" onchange="accessoryToggled(this.id,this.checked)">
+        <label for="watch">Watch</label><br>
+        <h3>Background</h3>
+        <label for="bgColor">Color</label><br>
+        <input type="color" id="bgColorOption" name="bgColor" value="#ffffff" onchange="changeBgColor(this.value)"/>
+      </div>
+  </div>
+</body>
+</html>
