@@ -56,38 +56,54 @@ async function getRarestSpecies(username,howManyResultsToDisplay) {
     } 
 }
 
+//Conversion from APIv1 to APIv2 done mostly by ChatGPT
 async function getAllOnPage(username, pageNumber, iconicTaxa) {
     const taxa = [];
-    const url = `https://api.inaturalist.org/v1/observations/species_counts?user_id=${username}&iconic_taxa=${iconicTaxa}&page=${pageNumber}`;
 
-      
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        const per_page = data['per_page'];
-        const total_results = data['total_results'];
-        const results = data['results'];
-        const remaining = total_results - ((pageNumber - 1) * per_page);
-        const limit = Math.min(per_page, remaining);
-        
-        for (let i = 0; i < limit; i++) {
-            const taxon = [
-                results[i]['taxon']['observations_count'],
-                results[i]['taxon']['id'],
-                results[i]['taxon']['name'],
-                results[i]['taxon']['preferred_common_name'],
-                "/".concat(results[i]['taxon']['ancestry']).concat("/"),
-                results[i]['taxon']['iconic_taxon_name']
-            ];
-            taxa.push(taxon);
-        }
+    const fields = "(count:!t,taxon:(observations_count:!t,id:!t,name:!t,preferred_common_name:!t,ancestry:!t,iconic_taxon_name:!t))";
 
-        return taxa;
-    } catch (error) {
-        console.error('Error in getAllOnPage:', error);
-        return []; // return empty array to keep things running
+    const params = new URLSearchParams({
+        user_login: username,
+        iconic_taxa: iconicTaxa,
+        page: String(pageNumber),
+        per_page: "500",
+        fields
+  });
+
+  const url = `https://api.inaturalist.org/v2/observations/species_counts?${params}`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`iNaturalist API error ${response.status}`);
     }
+
+    const data = await response.json();
+    const results = data.results ?? [];
+
+    for (const result of results) {
+      const taxon = result.taxon ?? {};
+
+      taxa.push([
+        taxon.observations_count ?? result.count ?? 0,
+        taxon.id ?? null,
+        taxon.name ?? "",
+        taxon.preferred_common_name ?? "",
+        taxon.ancestry ? `/${taxon.ancestry}/` : "",
+        taxon.iconic_taxon_name ?? ""
+      ]);
+    }
+
+    return taxa;
+  } catch (error) {
+    console.error("Error in getAllOnPage:", error);
+    return [];
+  }
 }
 
 //this gets the list of all the species information
@@ -106,7 +122,7 @@ async function getAllSpecies(username, iconicTaxa) {
 
 //this gets how many pages there are
 function howManyPages(username, iconicTaxa) {
-    const url = `https://api.inaturalist.org/v1/observations/species_counts?user_id=${username}&iconic_taxa=${iconicTaxa}`;
+    const url = `https://api.inaturalist.org/v2/observations/species_counts?user_id=${username}&iconic_taxa=${iconicTaxa}`;
     return fetch(url)
         .then(response => response.json()) // convert response to JSON
         .then(data => {
