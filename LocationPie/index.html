@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Pie</title>
+  <link href="piestyle.css" rel="stylesheet" />
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="locationPie.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <div class="container">
+    <div class="column">
+      <h1>Location Pie</h1>
+      <p>This is a tool that lets you visualize how many of your iNaturalist
+        observations of a species were made at certain places.</p>
+      <p id="success_message" class="success"></p>
+      <p id="error_message" class="error"></p>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" >
+      <label for="username">Taxon:</label>
+      <input type="text" id="taxon" name="taxon">
+      <button id="verifyButton" onclick="verify(document.getElementById('username').value,document.getElementById('taxon').value)">Verify</button>
+      <p>Add a place</p>
+      <input type="text" id="place" name="place">
+      <button type="button" onclick="addPlace(document.getElementById('place').value);" id="addPlaceButton">Add place</button>
+      <h3>Added places</h3>
+      <div id="places_added"></div>
+      <br>
+      <button type="button" onclick="buildPieChart();" id="pieButton">Make pie chart</button>
+      <br>
+    </div>
+  
+    <div class="column">
+      <h2 id="chartTitle"></h2>
+      <div class="chartContainerContainer">
+        <div class="chartContainer">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
