@@ -28,7 +28,6 @@ function receive_prompt(prompt) {
 
 //poops on the screen
 function respond(prompt){
-    console.log(my_poop);
     const rand_poop = give_random_poop();
     const poop_pic = document.createElement("img");
     const container = document.getElementById("oak");
